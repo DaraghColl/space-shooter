@@ -1,3 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #000;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7,6 +16,7 @@
   margin-top: 60px;
 }
 
+/** PLAYER **/
 .player {
   position: absolute;
   bottom: 2rem;
@@ -16,12 +26,33 @@
   transition: transform 0.3s linear;
 }
 
+.player img {
+  width: 50px;
+  height: 50px;
+}
+
 /** BULLET **/
 .bullet-div {
   position: absolute;
   transition: top 1s;
   width: 20px;
   height: 20px;
-  background-color: black;
+  background-color: #fff;
   border-radius: 40px;
+}
+
+/** ENEMY **/
+.enemy {
+  position: absolute;
+  top: 2rem;
+  left: 1rem;
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s linear;
+  transform: rotate(180deg);
+}
+
+.enemy img {
+  width: 50px;
+  height: 50px;
 }

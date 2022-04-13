@@ -8,131 +8,27 @@
   </head>
   <body>
     <div id="app">
-      <svg id="player" class="player">
-        <rect
-          id="player-rect"
-          width="50"
-          height="50"
-          style="fill: rgb(0, 0, 255); stroke-width: 3; stroke: rgb(0, 0, 0)"
-        />
-      </svg>
+      <div id="player" class="player">
+        <img src="./assets/player-rocket.png" alt="" />
+      </div>
 
       <div class="enemies">
-        <svg
-          id="enemy"
-          class="enemy"
-          style="
-            position: absolute;
-            left: 70%;
-            top: 2rem;
-            width: 50px;
-            height: 50px;
-          "
-        >
-          <rect
-            id="enemy-rect"
-            width="50"
-            height="50"
-            style="fill: red; stroke-width: 3; stroke: rgb(0, 0, 0)"
-          />
-        </svg>
+        <div id="enemy" class="enemy" style="left: 70%">
+          <img src="./assets/enemy-rocket.png" alt="" />
+        </div>
+        <div id="enemy" class="enemy" style="left: 20%">
+          <img src="./assets/enemy-rocket.png" alt="" />
+        </div>
+        <div id="enemy" class="enemy" style="left: 50%">
+          <img src="./assets/enemy-rocket.png" alt="" />
+        </div>
+        <div id="enemy" class="enemy" style="left: 10%">
+          <img src="./assets/enemy-rocket.png" alt="" />
+        </div>
+        <div id="enemy" class="enemy" style="left: 40%">
+          <img src="./assets/enemy-rocket.png" alt="" />
+        </div>
 
-        <svg
-          id="enemy2"
-          class="enemy"
-          style="
-            position: absolute;
-            left: 50%;
-            top: 10rem;
-            width: 50px;
-            height: 50px;
-          "
-        >
-          <rect
-            id="enemy2-rect"
-            width="50"
-            height="50"
-            style="
-              fill: green;
-              stroke-width: 3;
-              stroke: rgb(0, 0, 0);
-              position: absolute;
-              left: 20px;
-            "
-          />
-        </svg>
-        <svg
-          id="enemy2"
-          class="enemy"
-          style="
-            position: absolute;
-            left: 90%;
-            top: 5rem;
-            width: 50px;
-            height: 50px;
-          "
-        >
-          <rect
-            id="enemy2-rect"
-            width="50"
-            height="50"
-            style="
-              fill: green;
-              stroke-width: 3;
-              stroke: rgb(0, 0, 0);
-              position: absolute;
-              left: 30%;
-            "
-          />
-        </svg>
-        <svg
-          id="enemy2"
-          class="enemy"
-          style="
-            position: absolute;
-            left: 40%;
-            top: 3.5rem;
-            width: 50px;
-            height: 50px;
-          "
-        >
-          <rect
-            id="enemy2-rect"
-            width="50"
-            height="50"
-            style="
-              fill: green;
-              stroke-width: 3;
-              stroke: rgb(0, 0, 0);
-              position: absolute;
-              left: 20px;
-            "
-          />
-        </svg>
-        <svg
-          id="enemy2"
-          class="enemy"
-          style="
-            position: absolute;
-            left: 20px;
-            top: 13rem;
-            width: 50px;
-            height: 50px;
-          "
-        >
-          <rect
-            id="enemy2-rect"
-            width="50"
-            height="50"
-            style="
-              fill: green;
-              stroke-width: 3;
-              stroke: rgb(0, 0, 0);
-              position: absolute;
-              left: 80%;
-            "
-          />
-        </svg>
         <!-- <button id="test" style="position: absolute; top: 20rem">test</button> -->
       </div>
     </div>

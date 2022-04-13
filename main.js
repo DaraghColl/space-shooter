@@ -1,10 +1,12 @@
 import './style.css';
 
 const player = document.getElementById('player');
-const playerRect = document.getElementById('player-rect');
 const allEnemies = document.querySelectorAll('.enemy');
-let keyState;
-let isShooting = false;
+let playerActionsState = {
+  isShooting: false,
+  isMovingLeft: false,
+  isMovingRight: false,
+};
 let shootingInterval;
 
 const initGame = () => {
@@ -23,10 +25,14 @@ const update = () => {
   // handle player position based on key state
   let position = parseInt(player.style.left.slice(0, -2));
 
-  if (keyState === 'a') {
+  if (playerActionsState.isMovingLeft && position >= 8) {
+    console.warn('is moving keft');
     position -= 5;
-    player.style.left = position;
-  } else if (keyState === 'd') {
+    player.style.left = `${position}px`;
+  } else if (
+    playerActionsState.isMovingRight &&
+    position < window.innerWidth - 60
+  ) {
     position += 5;
     player.style.left = `${position}px`;
   }
@@ -36,16 +42,16 @@ const update = () => {
 // key down handler
 document.addEventListener('keydown', (e) => {
   if (e.key === 'a') {
-    keyState = 'a';
+    playerActionsState.isMovingLeft = true;
   } else if (e.key === 'd') {
-    keyState = 'd';
+    playerActionsState.isMovingRight = true;
   }
 
   if (e.key === ' ') {
-    if (!isShooting) {
+    if (!playerActionsState.isShooting) {
       shootBullet();
       shootingInterval = setInterval(shootBullet, 200);
-      isShooting = true;
+      playerActionsState.isShooting = true;
     }
   }
 });
@@ -53,13 +59,13 @@ document.addEventListener('keydown', (e) => {
 // key up handler
 document.addEventListener('keyup', (e) => {
   if (e.key === 'a') {
-    keyState = '';
+    playerActionsState.isMovingLeft = false;
   } else if (e.key === 'd') {
-    keyState = '';
+    playerActionsState.isMovingRight = false;
   }
 
   if (e.key === ' ') {
-    isShooting = false;
+    playerActionsState.isShooting = false;
     clearInterval(shootingInterval);
   }
 });
@@ -91,10 +97,10 @@ const createBullet = (x, y) => {
 
 // shoot bullet
 const shootBullet = () => {
-  const positionY = playerRect.getBoundingClientRect().top - 20;
+  const positionY = player.getBoundingClientRect().top - 20;
   const positionX =
-    playerRect.getBoundingClientRect().x +
-    playerRect.getBoundingClientRect().width -
+    player.getBoundingClientRect().x +
+    player.getBoundingClientRect().width -
     35;
 
   const bullet = createBullet(positionX, positionY);
