@@ -44,8 +44,8 @@ body {
 .bullet-div {
   position: absolute;
   transition: top 1s;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   background-color: #fff;
   border-radius: 40px;
   z-index: 1;

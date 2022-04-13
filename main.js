@@ -83,7 +83,7 @@ const createBullet = (x, y) => {
   const bullet = document.createElement('div');
   bullet.classList.add('bullet-div');
 
-  bullet.style.left = `${x}px`;
+  bullet.style.left = `${x + 5}px`;
   bullet.style.top = `${y}px`;
 
   setTimeout(() => {
@@ -164,7 +164,7 @@ const elementsCollide = (x1, y1, w1, h1, x2, y2, w2, h2) => {
 const spawnEnemy = () => {
   const enemiesContainer = document.getElementById('enemies-container');
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     const enemy = document.createElement('img');
     enemy.src = enemyRocketImg;
     enemy.setAttribute('id', 'enemy');
