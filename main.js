@@ -26,7 +26,6 @@ const update = () => {
   let position = parseInt(player.style.left.slice(0, -2));
 
   if (playerActionsState.isMovingLeft && position >= 8) {
-    console.warn('is moving keft');
     position -= 5;
     player.style.left = `${position}px`;
   } else if (
@@ -82,7 +81,7 @@ const createBullet = (x, y) => {
   setTimeout(() => {
     bullet.style.top = `-10rem`;
 
-    const checkBulletCollisionInterval = window.setInterval(function () {
+    const checkBulletCollisionInterval = window.setInterval(() => {
       checkCollision(bullet);
     }, 17);
 
