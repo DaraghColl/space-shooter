@@ -1,7 +1,9 @@
 import './style.css';
+import explosion from './assets/explosion.png';
+import enemyRocketImg from './assets/enemy-rocket.png';
 
 const player = document.getElementById('player');
-const allEnemies = document.querySelectorAll('.enemy');
+let allEnemies;
 const scoreUI = document.getElementById('score');
 let playerActionsState = {
   isShooting: false,
@@ -15,7 +17,10 @@ let shootingInterval;
 const initGame = () => {
   player.style.left = `10px`;
 
+  spawnEnemy();
   gameLoop();
+
+  allEnemies = document.querySelectorAll('.enemy');
 };
 
 const gameLoop = () => {
@@ -84,8 +89,10 @@ const createBullet = (x, y) => {
   setTimeout(() => {
     bullet.style.top = `-10rem`;
 
-    const checkBulletCollisionInterval = window.setInterval(() => {
-      checkCollision(bullet);
+    const checkBulletCollisionInterval = setInterval(() => {
+      if (checkCollision(bullet)) {
+        clearInterval(checkBulletCollisionInterval);
+      }
     }, 17);
 
     setTimeout(() => {
@@ -113,6 +120,7 @@ const shootBullet = () => {
 /** collision detection **/
 const checkCollision = (bullet) => {
   const bulletPositon = bullet.getBoundingClientRect();
+  let hasCollided = false;
 
   allEnemies.forEach((enemy) => {
     const enemyPositon = enemy.getBoundingClientRect();
@@ -129,10 +137,19 @@ const checkCollision = (bullet) => {
         enemyPositon.height
       )
     ) {
-      enemy.remove();
+      hasCollided = true;
+      bullet.remove();
       setScore();
+
+      enemy.src = explosion;
+
+      setTimeout(() => {
+        enemy.remove();
+      }, 50);
     }
   });
+
+  return hasCollided;
 };
 
 // check elements overlap
@@ -141,6 +158,20 @@ const elementsCollide = (x1, y1, w1, h1, x2, y2, w2, h2) => {
     return false;
   }
   return true;
+};
+
+/** ENEMY SPAWN **/
+const spawnEnemy = () => {
+  const enemiesContainer = document.getElementById('enemies-container');
+
+  for (let i = 0; i < 10; i++) {
+    const enemy = document.createElement('img');
+    enemy.src = enemyRocketImg;
+    enemy.setAttribute('id', 'enemy');
+    enemy.classList.add('enemy');
+    enemiesContainer.insertAdjacentElement('beforeend', enemy);
+  }
+  enemiesContainer.classList.add('enemies-move');
 };
 
 const setScore = () => {

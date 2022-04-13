@@ -19,6 +19,7 @@ body {
   display: flex;
   justify-content: space-around;
   padding: 1rem;
+  margin-bottom: 2rem;
   color: white;
   font-size: 1.5rem;
   z-index: 10;
@@ -51,7 +52,7 @@ body {
 }
 
 /** ENEMY **/
-.enemy {
+/* .enemy {
   position: absolute;
   top: 10rem;
   left: 1rem;
@@ -59,9 +60,28 @@ body {
   height: 50px;
   transition: transform 0.3s linear;
   transform: rotate(180deg);
+} */
+
+.enemy {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s linear;
+  transform: rotate(180deg);
+  margin: 0 1rem;
+}
+
+.enemies-move {
+  transform: translateY(100vh);
+  transition: transform 20s linear;
 }
 
 .enemy img {
   width: 50px;
   height: 50px;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
