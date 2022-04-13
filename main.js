@@ -2,11 +2,14 @@ import './style.css';
 
 const player = document.getElementById('player');
 const allEnemies = document.querySelectorAll('.enemy');
+const scoreUI = document.getElementById('score');
 let playerActionsState = {
   isShooting: false,
   isMovingLeft: false,
   isMovingRight: false,
 };
+let score = 0;
+
 let shootingInterval;
 
 const initGame = () => {
@@ -127,6 +130,7 @@ const checkCollision = (bullet) => {
       )
     ) {
       enemy.remove();
+      setScore();
     }
   });
 };
@@ -137,6 +141,11 @@ const elementsCollide = (x1, y1, w1, h1, x2, y2, w2, h2) => {
     return false;
   }
   return true;
+};
+
+const setScore = () => {
+  score += 1;
+  scoreUI.innerText = score;
 };
 
 initGame();
